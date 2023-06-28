@@ -49,7 +49,7 @@ app.get('/users/:userId/dictionaries/:dictionaryId/words/:wordId', checkAuth, wo
 //Удаление конкретного СЛОВА из словаря
 app.delete('/users/:userId/dictionaries/:dictionaryId/words/:wordId' , checkAuth , wordsControllers.deleteOne);
 
-app.listen(port, (err) => {
+app.listen(process.env.PORT || 4444 , (err) => {
     if(err){
         console.log(err);
     }
