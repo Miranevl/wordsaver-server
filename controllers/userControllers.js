@@ -24,7 +24,7 @@ export const register = async (req, res) => {
   
       } catch (err) {
           console.log(err);
-          res.status(404).json({
+          res.status(500).json({
               message: `Не удалось зарегистрироваться! ${err}`
           })
       }
