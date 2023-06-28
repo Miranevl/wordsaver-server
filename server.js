@@ -14,8 +14,19 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
+const fixieUrl = 'socks5://' + process.env.FIXIE_SOCKS_HOST;
 
-mongoose.connect(process.env.URL)
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    // Добавьте следующую опцию для использования прокси-сервера
+    socketTimeoutMS: 30000,
+    socksTimeout: 30000,
+    socksHost: process.env.FIXIE_SOCKS_HOST,
+    socksPort: 1080,
+  };
+
+mongoose.connect(process.env.URL, options)
 .then(() => console.log('DB OK!'))
 .catch((err) => console.log(err));
 
