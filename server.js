@@ -8,7 +8,7 @@ import * as dictionaryControllers from './controllers/dictionaryControllers.js';
 import * as wordsControllers from './controllers/wordsControllers.js';
 import handleValidationErrors from './middleware/validationsErrors.js';
 import cors from 'cors'
-import SocksProxyAgent from 'socks-proxy-agent';
+import { SocksClient } from 'socks5-https-client';
 
 
 const app = express();
@@ -16,14 +16,14 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-const fixieUrl = `socks5://${process.env.FIXIE_SOCKS_HOST}`;
-const agent = new SocksProxyAgent(fixieUrl);
+const fixieUrl = `socks://${process.env.FIXIE_SOCKS_HOST}`;
+const agent = new SocksClient({ socksHost: fixieUrl });
 
 const options = {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     agent: agent,
-};
+  };
 
 mongoose.connect(process.env.URL, options)
     .then(() => console.log('DB OK!'))
