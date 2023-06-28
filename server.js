@@ -10,9 +10,7 @@ import * as wordsControllers from './controllers/wordsControllers.js';
 import handleValidationErrors from './middleware/validationsErrors.js';
 import cors from 'cors'
 
-dotenv.config();
-const port = process.env.PORT;
-const url = process.env.URL;
+
 const secret = process.env.SECRET;
 
 const app = express();
@@ -20,7 +18,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(url)
+mongoose.connect(process.env.URL)
 .then(() => console.log('DB OK!'))
 .catch((err) => console.log(err));
 
