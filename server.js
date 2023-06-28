@@ -11,8 +11,6 @@ import handleValidationErrors from './middleware/validationsErrors.js';
 import cors from 'cors'
 
 
-const secret = process.env.SECRET;
-
 const app = express();
 
 app.use(express.json());
@@ -56,4 +54,4 @@ app.listen(process.env.PORT || 4444 , (err) => {
     }
 })
 
-export {secret , app};
+export {app};
