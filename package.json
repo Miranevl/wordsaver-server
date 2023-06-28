@@ -20,6 +20,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^7.1.0",
     "nodemon": "^2.0.22",
+    "socks-proxy-agent": "^8.0.1",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
